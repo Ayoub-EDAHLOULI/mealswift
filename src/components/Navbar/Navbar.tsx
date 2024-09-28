@@ -1,10 +1,17 @@
 import "./Navbar.scss";
+import Image from "next/image";
 
 function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar__container">
         <div className="navbar__logo">
+          <Image
+            src="/images/icons/logo.png"
+            alt="MealSwift"
+            width={50}
+            height={50}
+          />
           <a href="/">MealSwift </a>
         </div>
         <div className="navbar__menu">

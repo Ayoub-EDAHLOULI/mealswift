@@ -1,6 +1,6 @@
 .navbar {
   width: 100%;
-  padding: 18px 50px;
+  padding: 15px 50px;
 
   .navbar__container {
     display: flex;
@@ -10,6 +10,17 @@
     .navbar__logo {
       font-size: 1.5rem;
       font-weight: 700;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      column-gap: 5px;
+      color: var(--color-primary);
+
+      img {
+        margin-bottom: 5px;
+        transform: rotate(-1deg);
+      }
     }
 
     .navbar__menu {
