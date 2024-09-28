@@ -22,6 +22,8 @@ function Navbar() {
               <a href="/">Contact</a>
             </li>
           </ul>
+
+          <button className="navbar__button">Sign Up</button>
         </div>
       </div>
     </nav>
