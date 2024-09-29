@@ -47,7 +47,6 @@ body {
   background-color: var(--color-bg-white);
   scroll-behavior: smooth;
   line-height: 1.5;
-  height: 10000px;
 }
 
 a {
