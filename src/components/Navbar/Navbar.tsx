@@ -1,5 +1,6 @@
 import "./Navbar.scss";
 import Image from "next/image";
+import Link from "next/link";
 
 function Navbar() {
   return (
@@ -12,21 +13,21 @@ function Navbar() {
             width={50}
             height={50}
           />
-          <a href="/">MealSwift </a>
+          <Link href="/">MealSwift </Link>
         </div>
         <div className="navbar__menu">
           <ul>
             <li>
-              <a href="/">Home</a>
+              <Link href="/">Home</Link>
             </li>
             <li>
-              <a href="/">About</a>
+              <Link href="/about">About</Link>
             </li>
             <li>
-              <a href="/">Services</a>
+              <Link href="/">Services</Link>
             </li>
             <li>
-              <a href="/">Contact</a>
+              <Link href="/">Contact</Link>
             </li>
           </ul>
 
