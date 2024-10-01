@@ -24,10 +24,10 @@ function Navbar() {
               <Link href="/about">About</Link>
             </li>
             <li>
-              <Link href="/">Services</Link>
+              <Link href="/services">Services</Link>
             </li>
             <li>
-              <Link href="/">Contact</Link>
+              <Link href="/contact">Contact</Link>
             </li>
           </ul>
 

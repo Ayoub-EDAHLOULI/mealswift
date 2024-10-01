@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Rubik:ital@0;1&family=Ubuntu:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Rubik:ital@0;1&family=Ubuntu:wght@300;400;500;700&family=Rakkas:wght@400&display=swap");
 
 :root {
   --color-primary: #78cfcf;
@@ -29,7 +29,8 @@
 
   --font-primary: "Roboto", sans-serif;
   --font-secondary: "Rubik", sans-serif;
-  --font-tertiary: "Ubuntu", sans-serif;
+  --font-third: "Ubuntu", sans-serif;
+  --font-quaternary: "Rakkas", cursive;
 }
 
 * {
