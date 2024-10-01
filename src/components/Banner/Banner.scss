@@ -79,6 +79,167 @@
         font-weight: 400;
         font-family: var(--font-secondary);
         margin-bottom: 20px;
+        text-align: center; // Center text for better alignment
+      }
+    }
+  }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1024px) {
+  .banner {
+    .banner__container {
+      .banner__container__top {
+        flex-direction: column;
+        height: auto;
+        padding: 20px 0;
+        column-gap: 20px;
+
+        .banner__container__top__leftside {
+          align-items: center;
+          text-align: center;
+
+          .banner__container__top__title {
+            font-size: 1.8rem;
+          }
+
+          .banner__container__top__subtitle {
+            font-size: 1rem;
+          }
+        }
+
+        .banner__button {
+          width: 180px;
+          height: 45px;
+          font-size: 1rem;
+        }
+      }
+
+      .banner__container__bottom {
+        h2 {
+          font-size: 4rem;
+          text-align: center;
+        }
+
+        p {
+          font-size: 1rem;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .banner {
+    .banner__container {
+      .banner__container__top {
+        flex-direction: column;
+        padding: 20px;
+        height: auto;
+        justify-content: center;
+
+        .banner__container__top__leftside {
+          align-items: center;
+          text-align: center;
+
+          .banner__container__top__title {
+            font-size: 1.6rem;
+          }
+
+          .banner__container__top__subtitle {
+            font-size: 0.95rem;
+          }
+        }
+
+        .banner__button {
+          width: 160px;
+          height: 40px;
+          font-size: 0.95rem;
+        }
+      }
+
+      .banner__container__bottom {
+        h2 {
+          font-size: 3rem;
+        }
+
+        p {
+          font-size: 0.95rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .banner {
+    .banner__container {
+      .banner__container__top {
+        flex-direction: column;
+        padding: 15px;
+        height: auto;
+
+        .banner__container__top__leftside {
+          align-items: center;
+          text-align: center;
+
+          .banner__container__top__title {
+            font-size: 1.4rem;
+          }
+
+          .banner__container__top__subtitle {
+            font-size: 0.85rem;
+          }
+        }
+
+        .banner__button {
+          width: 140px;
+          height: 35px;
+          font-size: 0.85rem;
+        }
+      }
+
+      .banner__container__bottom {
+        h2 {
+          font-size: 2.5rem;
+        }
+
+        p {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .banner {
+    .banner__container {
+      .banner__container__top__leftside {
+        .banner__container__top__title {
+          font-size: 1.2rem;
+        }
+
+        .banner__container__top__subtitle {
+          font-size: 0.75rem;
+        }
+      }
+
+      .banner__button {
+        width: 120px;
+        height: 30px;
+        font-size: 0.75rem;
+      }
+
+      .banner__container__bottom {
+        h2 {
+          font-size: 2rem;
+        }
+
+        p {
+          font-size: 0.85rem;
+        }
       }
     }
   }

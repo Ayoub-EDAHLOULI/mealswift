@@ -1,8 +1,17 @@
+"use client";
+
+import { useState } from "react";
 import "./Navbar.scss";
 import Image from "next/image";
 import Link from "next/link";
 
 function Navbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar__container">
@@ -15,7 +24,12 @@ function Navbar() {
           />
           <Link href="/">MealSwift </Link>
         </div>
-        <div className="navbar__menu">
+
+        <div
+          className={`navbar__menu ${
+            isMobileMenuOpen ? "navbar__menu--open" : ""
+          }`}
+        >
           <ul>
             <li>
               <Link href="/">Home</Link>
@@ -30,10 +44,19 @@ function Navbar() {
               <Link href="/contact">Contact</Link>
             </li>
           </ul>
-
           <Link href="/signin">
             <button className="navbar__button">Signin</button>
           </Link>
+        </div>
+
+        {/* Hamburger menu for mobile */}
+        <div className="navbar__icon" onClick={toggleMobileMenu}>
+          <Image
+            src="/images/icons/menu_list.png"
+            alt="Menu"
+            width={30}
+            height={30}
+          />
         </div>
       </div>
     </nav>

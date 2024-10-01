@@ -34,6 +34,7 @@
       font-family: var(--font-secondary);
       margin: 20px 0;
       letter-spacing: 1px;
+      text-align: center; // Make the subtitle center aligned for better readability
     }
 
     .restaurant__content {
@@ -53,6 +54,11 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
         cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
 
         .restaurant__image {
           width: 100px;
@@ -98,6 +104,87 @@
               font-size: 1rem;
               font-weight: 400;
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1024px) {
+  .restaurant {
+    .restaurant__container {
+      padding: 0 20px;
+
+      .restaurant__title {
+        font-size: 2rem;
+      }
+
+      .restaurant__content {
+        .restaurant__box {
+          width: 45%; /* Slightly larger for tablet screens */
+          column-gap: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .restaurant {
+    .restaurant__container {
+      .restaurant__title {
+        font-size: 1.8rem;
+      }
+
+      .restaurant__content {
+        .restaurant__box {
+          width: 100%; /* Full width for mobile */
+          column-gap: 20px;
+          padding: 15px;
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .restaurant {
+    .restaurant__container {
+      .restaurant__title {
+        font-size: 1.6rem;
+      }
+
+      .restaurant__subtitle {
+        font-size: 1rem;
+      }
+
+      .restaurant__content {
+        .restaurant__box {
+          width: 100%; /* Ensure full width for smaller mobile devices */
+          column-gap: 10px;
+          padding: 10px;
+          margin: 5px 0;
+
+          .restaurant__info {
+            .restaurant__name {
+              font-size: 1rem;
+            }
+
+            .restaurant__address {
+              font-size: 0.8rem;
+            }
+
+            .restaurant__rating-value {
+              font-size: 0.9rem;
+            }
+          }
+
+          .restaurant__image {
+            width: 80px; /* Reduce image size */
+            height: 80px;
           }
         }
       }

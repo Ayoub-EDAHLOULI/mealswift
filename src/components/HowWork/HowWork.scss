@@ -31,6 +31,7 @@
       display: flex;
       justify-content: center;
       width: 100%;
+      flex-wrap: wrap; /* Allow wrapping on smaller screens */
 
       .how-work__step {
         display: flex;
@@ -83,6 +84,69 @@
           font-family: var(--font-secondary);
           text-align: center;
           margin-top: 10px;
+        }
+      }
+    }
+  }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1024px) {
+  .how-work {
+    .how-work__container {
+      .how-work__title {
+        font-size: 2rem;
+        margin-bottom: 50px;
+      }
+
+      .how-work__steps {
+        .how-work__step {
+          width: 30%; /* Increase the width of steps for medium-sized screens */
+          margin: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .how-work {
+    .how-work__container {
+      .how-work__title {
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+      }
+
+      .how-work__steps {
+        .how-work__step {
+          width: 45%; /* Make steps take more space in smaller screens */
+          margin: 10px 5px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .how-work {
+    .how-work__container {
+      padding: 0 20px;
+      .how-work__title {
+        font-size: 1.6rem;
+      }
+
+      .how-work__steps {
+        .how-work__step {
+          width: 100%; /* Full width for mobile devices */
+          margin: 10px 0;
+        }
+
+        .how-work__step-title {
+          font-size: 1.2rem;
+        }
+
+        .how-work__step-description {
+          font-size: 0.9rem;
         }
       }
     }
