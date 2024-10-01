@@ -45,21 +45,23 @@
         cursor: pointer;
       }
 
-      .navbar__button {
-        padding: 10px 25px;
-        background: var(--color-primary);
-        color: #fff;
-        font-size: 1rem;
-        font-weight: 500;
-        font-family: var(--font-primary);
-        border: none;
-        border-radius: 5px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-        transition: all 0.3s;
+      a {
+        .navbar__button {
+          padding: 10px 25px;
+          background: var(--color-primary);
+          color: #fff;
+          font-size: 1rem;
+          font-weight: 500;
+          font-family: var(--font-primary);
+          border: none;
+          border-radius: 5px;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+          cursor: pointer;
+          transition: all 0.3s;
 
-        &:hover {
-          background: var(--color-primary-dark);
+          &:hover {
+            background: var(--color-primary-dark);
+          }
         }
       }
     }
