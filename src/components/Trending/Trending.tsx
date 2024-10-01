@@ -74,6 +74,40 @@ function Trending() {
               <button className="trending__card-button">+</button>
             </div>
           </div>
+
+          <div className="trending__card">
+            <h4 className="trending__card-category">Beef</h4>
+            <h3 className="trending__card__title ">Bacon Cheeseburger</h3>
+            <div className="trending__card__image">
+              <Image
+                src="/images/food/product_04.jpg"
+                alt="Trending"
+                width={150}
+                height={150}
+              />
+            </div>
+            <div className="trending__card-info">
+              <span className="trending__card-price">$6.99</span>
+              <button className="trending__card-button">+</button>
+            </div>
+          </div>
+
+          <div className="trending__card">
+            <h4 className="trending__card-category">Beef</h4>
+            <h3 className="trending__card__title ">Bacon Cheeseburger</h3>
+            <div className="trending__card__image">
+              <Image
+                src="/images/food/product_04.jpg"
+                alt="Trending"
+                width={150}
+                height={150}
+              />
+            </div>
+            <div className="trending__card-info">
+              <span className="trending__card-price">$6.99</span>
+              <button className="trending__card-button">+</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
