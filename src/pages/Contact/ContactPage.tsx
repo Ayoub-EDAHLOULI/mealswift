@@ -1,14 +1,14 @@
-import HeroContent from "@/components/HeroContent/HeroContent";
-import "./ContactPage.scss";
+import ContactUs from "@/components/ContactUs/ContactUs";
+import ShortBackground from "@/components/ShortBackground/ShortBackground";
 
 function ContactPage() {
   return (
     <section>
-      <HeroContent
+      <ShortBackground
         title="Contact Us"
-        subtitle="We are here to help you"
-        backgroundImage="/images/hero_contact.jpg"
+        background="/images/hero_contactus.jpg"
       />
+      <ContactUs />
     </section>
   );
 }

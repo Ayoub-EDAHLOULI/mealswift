@@ -4,7 +4,7 @@ import SignInForm from "@/components/SignInForm/SignInForm";
 function SignInPage() {
   return (
     <section>
-      <ShortBackground background="/images/signup.jpg" />
+      <ShortBackground title="" background="/images/signup.jpg" />
       <SignInForm />
     </section>
   );

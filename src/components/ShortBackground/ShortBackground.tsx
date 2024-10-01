@@ -1,11 +1,21 @@
 import "./ShortBackground.scss";
 
-function ShortBackground({ background }: { background: string }) {
+function ShortBackground({
+  title,
+  background,
+}: {
+  title: string;
+  background: string;
+}) {
   return (
     <section
       className="short-background"
-      style={{ background: `url(${background}) center/cover` }}
-    />
+      style={{
+        background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(${background}) center/cover`,
+      }}
+    >
+      <h1>{title}</h1>
+    </section>
   );
 }
 

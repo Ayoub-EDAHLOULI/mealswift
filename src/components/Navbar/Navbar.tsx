@@ -31,8 +31,8 @@ function Navbar() {
             </li>
           </ul>
 
-          <Link href="/signup">
-            <button className="navbar__button">Login</button>
+          <Link href="/signin">
+            <button className="navbar__button">Signin</button>
           </Link>
         </div>
       </div>
