@@ -88,7 +88,7 @@
           padding: 10px 20px;
           margin-top: 15px;
           border: none;
-          border-radius: 5px;
+          border-radius: 5px 5px 10px 10px;
           background-color: #f39c12;
           color: #fff;
           font-size: 16px;
@@ -96,6 +96,37 @@
           cursor: pointer;
           transition: all 0.3s ease;
         }
+      }
+    }
+  }
+}
+
+// Responsive design
+@media screen and (max-width: 1024px) {
+  .services_food {
+    .services_food__container {
+      .services_food__item {
+        width: 30%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .services_food {
+    .services_food__container {
+      .services_food__item {
+        width: 45%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .services_food {
+    .services_food__container {
+      .services_food__item {
+        width: 100%;
       }
     }
   }
