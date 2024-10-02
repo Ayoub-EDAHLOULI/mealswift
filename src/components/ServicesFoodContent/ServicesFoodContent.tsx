@@ -1,8 +1,12 @@
-import "./ServicesFood.scss";
+import "./ServicesFoodContent.scss";
 import Image from "next/image";
-import { foodItems } from "@/constants/index";
+import { FoodItem } from "@/constants/index";
 
-function ServicesFood() {
+interface ServicesFoodProps {
+  foodItems: FoodItem[];
+}
+
+function ServicesFoodContent({ foodItems }: ServicesFoodProps) {
   return (
     <section className="services_food">
       <div className="services_food__container">
@@ -50,4 +54,4 @@ function ServicesFood() {
   );
 }
 
-export default ServicesFood;
+export default ServicesFoodContent;
