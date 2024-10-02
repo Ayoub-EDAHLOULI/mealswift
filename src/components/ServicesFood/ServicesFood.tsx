@@ -14,7 +14,10 @@ function ServicesFood() {
               height={150}
             />
             <div className="services_food__item__body">
-              <h3 className="services_food__item__title">Burger</h3>
+              <div className="services_food__item__body__top">
+                <h3 className="services_food__item__title">Burger</h3>
+                <h5 className="services_food__item__category">Hamburger</h5>
+              </div>
               <div className="services_food__item__body__bottom">
                 <div className="services_food__item__body__bottom__stars">
                   <div className="services_food__item__body__bottom__stars__icon">
@@ -44,7 +47,10 @@ function ServicesFood() {
               height={150}
             />
             <div className="services_food__item__body">
-              <h3 className="services_food__item__title">Meat</h3>
+              <div className="services_food__item__body__top">
+                <h3 className="services_food__item__title">Meat</h3>
+                <h5 className="services_food__item__category">Meat</h5>
+              </div>
               <div className="services_food__item__body__bottom">
                 <div className="services_food__item__body__bottom__stars">
                   <div className="services_food__item__body__bottom__stars__icon">
@@ -74,7 +80,10 @@ function ServicesFood() {
               height={150}
             />
             <div className="services_food__item__body">
-              <h3 className="services_food__item__title">Noodles</h3>
+              <div className="services_food__item__body__top">
+                <h3 className="services_food__item__title">Noodles</h3>
+                <h5 className="services_food__item__category">Noodles</h5>
+              </div>
               <div className="services_food__item__body__bottom">
                 <div className="services_food__item__body__bottom__stars">
                   <div className="services_food__item__body__bottom__stars__icon">
@@ -104,7 +113,10 @@ function ServicesFood() {
               height={150}
             />
             <div className="services_food__item__body">
-              <h3 className="services_food__item__title">Salad</h3>
+              <div className="services_food__item__body__top">
+                <h3 className="services_food__item__title">Salad</h3>
+                <h5 className="services_food__item__category">Salad</h5>
+              </div>
               <div className="services_food__item__body__bottom">
                 <div className="services_food__item__body__bottom__stars">
                   <div className="services_food__item__body__bottom__stars__icon">
@@ -134,7 +146,10 @@ function ServicesFood() {
               height={150}
             />
             <div className="services_food__item__body">
-              <h3 className="services_food__item__title">Pizza</h3>
+              <div className="services_food__item__body__top">
+                <h3 className="services_food__item__title">Pizza</h3>
+                <h5 className="services_food__item__category">Pizza</h5>
+              </div>
               <div className="services_food__item__body__bottom">
                 <div className="services_food__item__body__bottom__stars">
                   <div className="services_food__item__body__bottom__stars__icon">
@@ -164,7 +179,10 @@ function ServicesFood() {
               height={150}
             />
             <div className="services_food__item__body">
-              <h3 className="services_food__item__title">Mexican</h3>
+              <div className="services_food__item__body__top">
+                <h3 className="services_food__item__title">Mexican</h3>
+                <h5 className="services_food__item__category">Mexican</h5>
+              </div>
               <div className="services_food__item__body__bottom">
                 <div className="services_food__item__body__bottom__stars">
                   <div className="services_food__item__body__bottom__stars__icon">
@@ -194,7 +212,10 @@ function ServicesFood() {
               height={150}
             />
             <div className="services_food__item__body">
-              <h3 className="services_food__item__title">Fish</h3>
+              <div className="services_food__item__body__top">
+                <h3 className="services_food__item__title">Fish</h3>
+                <h5 className="services_food__item__category">Fish</h5>
+              </div>
               <div className="services_food__item__body__bottom">
                 <div className="services_food__item__body__bottom__stars">
                   <div className="services_food__item__body__bottom__stars__icon">
@@ -224,7 +245,10 @@ function ServicesFood() {
               height={150}
             />
             <div className="services_food__item__body">
-              <h3 className="services_food__item__title">Chicken</h3>
+              <div className="services_food__item__body__top">
+                <h3 className="services_food__item__title">Chicken</h3>
+                <h5 className="services_food__item__category">Chicken</h5>
+              </div>
               <div className="services_food__item__body__bottom">
                 <div className="services_food__item__body__bottom__stars">
                   <div className="services_food__item__body__bottom__stars__icon">
