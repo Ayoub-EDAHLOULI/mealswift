@@ -1,5 +1,4 @@
 import React from "react";
-
 import "./DriversOrdersTab.scss";
 
 function DriversOrdersTab() {
@@ -7,7 +6,9 @@ function DriversOrdersTab() {
     <section className="drivers-orders-tab">
       <div className="drivers-orders-tab__container">
         <div className="drivers-orders-tab__container__header">
-          <h2>Drivers Orders</h2>
+          <h2 className="drivers-orders-tab__container__header__title">
+            Drivers Orders
+          </h2>
         </div>
         <table className="drivers-orders-tab__container__body__table">
           <thead>
