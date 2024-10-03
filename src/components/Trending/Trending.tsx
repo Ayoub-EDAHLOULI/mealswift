@@ -1,3 +1,4 @@
+import React from "react";
 import "./Trending.scss";
 import Image from "next/image";
 

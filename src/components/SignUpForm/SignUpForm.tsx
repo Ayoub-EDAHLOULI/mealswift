@@ -1,10 +1,11 @@
 /* eslint-disable react/react-in-jsx-scope */
-'use client';
+"use client";
 
+import React from "react";
 import { useState } from "react";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import "./SignUpForm.scss";
 
 function SignUpForm() {
@@ -15,7 +16,7 @@ function SignUpForm() {
     adresse: "",
     role: "client", // ou un sélecteur pour choisir le rôle
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
@@ -28,21 +29,21 @@ function SignUpForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/auth/signup', {
-        method: 'POST',
+      const response = await fetch("/api/auth/signup", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(credentials),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message || 'Échec de la création du compte');
+        throw new Error(errorData.message || "Échec de la création du compte");
       }
 
       // Connecter l'utilisateur après l'inscription
@@ -53,12 +54,12 @@ function SignUpForm() {
       });
 
       if (result?.error) {
-        throw new Error('Échec de la connexion');
+        throw new Error("Échec de la connexion");
       }
 
       // Rediriger vers le tableau de bord
-      router.push('/dashboard');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      router.push("/dashboard");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.message || "Une erreur s'est produite");
     } finally {
@@ -106,14 +107,16 @@ function SignUpForm() {
           <select
             name="role"
             value={credentials.role}
-            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleChange(e as unknown as React.ChangeEvent<HTMLInputElement>)}
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              handleChange(e as unknown as React.ChangeEvent<HTMLInputElement>)
+            }
             required
           >
             <option value="client">Client</option>
             <option value="admin">Administrateur</option>
           </select>
           <button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Inscription en cours...' : 'Créer un compte'}
+            {isSubmitting ? "Inscription en cours..." : "Créer un compte"}
           </button>
           {error && <p className="error">{error}</p>}
           <Link href="/signin">Vous avez déjà un compte ? Connectez-vous</Link>

@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { usePathname } from "next/navigation";
 import AdminDashboard from "@/components/AdminDashboard/AdminDashboard";
 import RestaurantDashboard from "@/components/RestaurantDashboard/RestaurantDashboard";

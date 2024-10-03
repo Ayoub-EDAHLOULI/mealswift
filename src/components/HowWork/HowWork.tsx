@@ -1,3 +1,4 @@
+import React from "react";
 import "./HowWork.scss";
 import Image from "next/image";
 
