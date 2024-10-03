@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import "./RestaurantForm.scss";
 import { useState } from "react";
 
@@ -15,7 +16,7 @@ interface RestaurantFormData {
     end: string;
   };
   phoneNumber: string;
-  website: string;
+  email: string;
   description: string;
   cuisine: string;
   rating?: number;
@@ -28,7 +29,7 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ onSubmit }) => {
     address: "",
     hours: { start: "", end: "" },
     phoneNumber: "",
-    website: "",
+    email: "",
     description: "",
     cuisine: "",
     rating: undefined,
@@ -131,6 +132,17 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ onSubmit }) => {
 
         <div className="form__group">
           <div className="form__group__phone_website">
+            <label htmlFor="website">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="form__group__phone_website">
             <label htmlFor="phoneNumber">Phone Number</label>
             <input
               type="tel"
@@ -140,17 +152,6 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ onSubmit }) => {
               value={formData.phoneNumber}
               onChange={handleInputChange}
               required
-            />
-          </div>
-
-          <div className="form__group__phone_website">
-            <label htmlFor="website">Website</label>
-            <input
-              type="url"
-              id="website"
-              name="website"
-              value={formData.website}
-              onChange={handleInputChange}
             />
           </div>
         </div>

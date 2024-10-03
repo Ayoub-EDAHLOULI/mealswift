@@ -1,3 +1,4 @@
+import React from "react";
 import "./DeliveryAbout.scss";
 import Image from "next/image";
 

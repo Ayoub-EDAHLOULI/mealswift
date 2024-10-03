@@ -1,3 +1,4 @@
+import React from "react";
 import ServicesFoodContent from "@/components/ServicesFoodContent/ServicesFoodContent";
 import ServicesOptions from "@/components/ServicesOptions/ServicesOptions";
 import ShortBackground from "@/components/ShortBackground/ShortBackground";

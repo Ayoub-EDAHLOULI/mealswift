@@ -2,10 +2,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
+import React from "react";
 import { useState } from "react";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import "./SignInForm.scss"; // Assurez-vous de créer ce fichier pour le style
 
 function SignInForm() {
@@ -13,7 +14,7 @@ function SignInForm() {
     email: "",
     mot_de_passe: "",
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
@@ -26,7 +27,7 @@ function SignInForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setIsSubmitting(true);
 
     try {
@@ -71,10 +72,12 @@ function SignInForm() {
             required
           />
           <button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Connexion en cours...' : 'Se connecter'}
+            {isSubmitting ? "Connexion en cours..." : "Se connecter"}
           </button>
           {error && <p className="error">{error}</p>}
-          <Link href="/signup">Vous n&apos;avez pas de compte ? Inscrivez-vous</Link>
+          <Link href="/signup">
+            Vous n&apos;avez pas de compte ? Inscrivez-vous
+          </Link>
         </form>
       </div>
     </div>

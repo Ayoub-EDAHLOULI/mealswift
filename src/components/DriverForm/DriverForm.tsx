@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useState } from "react";
 import "./DriverForm.scss";
 
@@ -62,7 +63,7 @@ const DriverForm: React.FC<DriverFormProps> = ({ onSubmit }) => {
       <form onSubmit={handleSubmit}>
         <div className="form__group">
           <div className="form__group_label_input">
-            <label htmlFor="name">Driver's Name</label>
+            <label htmlFor="name">Drivers Name</label>
             <input
               type="text"
               id="name"
@@ -100,7 +101,7 @@ const DriverForm: React.FC<DriverFormProps> = ({ onSubmit }) => {
           </div>
 
           <div className="form__group__phone_licence">
-            <label htmlFor="licenseNumber">Driver's License Number</label>
+            <label htmlFor="licenseNumber">Drivers License Number</label>
             <input
               type="text"
               id="licenseNumber"

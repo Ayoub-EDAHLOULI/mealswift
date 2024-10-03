@@ -1,3 +1,4 @@
+import React from "react";
 import "./Footer.scss";
 import Image from "next/image";
 import Link from "next/link";

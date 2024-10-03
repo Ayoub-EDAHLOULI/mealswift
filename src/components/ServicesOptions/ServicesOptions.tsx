@@ -1,3 +1,4 @@
+import React from "react";
 import "./ServicesOptions.scss";
 import Image from "next/image";
 

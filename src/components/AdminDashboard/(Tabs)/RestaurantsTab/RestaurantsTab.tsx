@@ -1,3 +1,4 @@
+import React from "react";
 import "./RestaurantsTab.scss";
 
 function RestaurantsTab() {

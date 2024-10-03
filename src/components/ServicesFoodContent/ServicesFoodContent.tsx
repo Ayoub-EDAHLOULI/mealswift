@@ -1,3 +1,4 @@
+import React from "react";
 import "./ServicesFoodContent.scss";
 import Image from "next/image";
 import { FoodItem } from "@/constants/index";

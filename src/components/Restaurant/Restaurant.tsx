@@ -1,3 +1,4 @@
+import React from "react";
 import "./Restaurant.scss";
 import { restaurants } from "@/constants/index";
 import Link from "next/link";
