@@ -1,7 +1,65 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./RestaurantsTab.scss";
 
-function RestaurantsTab() {
+interface Restaurant {
+  id_restaurant: number;
+  nom: string;
+  email: string;
+  phone: string;
+  adresse: string;
+}
+
+interface RestaurantsTabProps {
+  onTabChange: (tab: string) => void;
+}
+
+function RestaurantsTab({ onTabChange }: RestaurantsTabProps) {
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    fetchRestaurants();
+  }, []);
+
+  const fetchRestaurants = async () => {
+    try {
+      const response = await fetch('/api/restaurants');
+      if (response.ok) {
+        const data = await response.json();
+        setRestaurants(data);
+      } else {
+        console.error('Erreur lors de la récupération des restaurants');
+      }
+    } catch (error) {
+      console.error('Erreur:', error);
+    }
+  };
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleDelete = async (id: number) => {
+    if (window.confirm("Êtes-vous sûr de vouloir supprimer ce restaurant ?")) {
+      try {
+        const response = await fetch(`/api/restaurants/${id}`, {
+          method: 'DELETE',
+        });
+        if (response.ok) {
+          setRestaurants(restaurants.filter(restaurant => restaurant.id_restaurant !== id));
+        } else {
+          console.error('Erreur lors de la suppression du restaurant');
+        }
+      } catch (error) {
+        console.error('Erreur:', error);
+      }
+    }
+  };
+
+  const filteredRestaurants = restaurants.filter(restaurant =>
+    restaurant.nom.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <section className="users-tab">
       <div className="users-tab__container">
@@ -9,12 +67,17 @@ function RestaurantsTab() {
           <h2>Restaurants</h2>
           <div className="users-tab__container__header__search">
             <div className="users-tab__container__header__search__input">
-              <input type="text" placeholder="Search users" />
+              <input 
+                type="text" 
+                placeholder="Search users" 
+                value={searchTerm}
+                onChange={handleSearch}
+              />
               <button type="button">Search</button>
             </div>
 
             <div className="users-tab__container__header__search__addUser">
-              <button>Add Restaurant</button>
+              <button onClick={() => onTabChange("AddRestaurant")}>Add Restaurant</button>
             </div>
           </div>
         </div>
@@ -31,66 +94,20 @@ function RestaurantsTab() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Mexican TacoMex</td>
-                <td>mexicantacomex@gmail.com</td>
-                <td>123456789</td>
-                <td>
-                  <address>1234 Main St</address>
-                </td>
-                <td>
-                  <button>Edit</button>
-                  <button>Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td>Sushi Gold</td>
-                <td>sushigold@gmail.com</td>
-                <td>123456789</td>
-                <td>
-                  <address>1234 Main St</address>
-                </td>
-                <td>
-                  <button>Edit</button>
-                  <button>Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td>Naples Pizza</td>
-                <td>naplespizza@gmail.com</td>
-                <td>123456789</td>
-                <td>
-                  <address>1234 Main St</address>
-                </td>
-                <td>
-                  <button>Edit</button>
-                  <button>Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td>Dragon Tower</td>
-                <td>dragontower@gmail.com</td>
-                <td>123456789</td>
-                <td>
-                  <address>1234 Main St</address>
-                </td>
-                <td>
-                  <button>Edit</button>
-                  <button>Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td>Dragon Tower</td>
-                <td>dragontower@gmail.com</td>
-                <td>123456789</td>
-                <td>
-                  <address>1234 Main St</address>
-                </td>
-                <td>
-                  <button>Edit</button>
-                  <button>Delete</button>
-                </td>
-              </tr>
+              {filteredRestaurants.map((restaurant) => (
+                <tr key={restaurant.id_restaurant}>
+                  <td>{restaurant.nom}</td>
+                  <td>{restaurant.email}</td>
+                  <td>{restaurant.phone}</td>
+                  <td>
+                    <address>{restaurant.adresse}</address>
+                  </td>
+                  <td>
+                    <button>Edit</button>
+                    <button onClick={() => handleDelete(restaurant.id_restaurant)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

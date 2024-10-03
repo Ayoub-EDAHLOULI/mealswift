@@ -31,7 +31,7 @@ function AdminDashboard() {
       case "AddUser":
         return <AddUserTab />;
       case "Restaurants":
-        return <RestaurantsTab />;
+        return <RestaurantsTab onTabChange={handleTabChange} />;
       case "AddRestaurant":
         return <AddRestaurantTab />;
       case "DriversOrders":

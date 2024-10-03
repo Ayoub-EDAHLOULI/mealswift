@@ -1,11 +1,7 @@
-<<<<<<< HEAD
 /* eslint-disable react/react-in-jsx-scope */
 // /components/Hero.tsx
 "use client";
 
-=======
-import React from "react";
->>>>>>> 308172f303c0b61011e44ad7e0cc4dee2ccd9ea3
 import "./Hero.scss";
 import Link from "next/link";
 import { useState } from 'react';
