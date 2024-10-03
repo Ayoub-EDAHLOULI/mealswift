@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useState } from "react";
 import "./AdminDashboard.scss";
 import DashboardTab from "./(Tabs)/DashboardTab/DashboardTab";
