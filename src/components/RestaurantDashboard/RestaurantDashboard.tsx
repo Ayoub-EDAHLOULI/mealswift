@@ -6,7 +6,8 @@ import "./RestaurantDashboard.scss";
 import ShortBackground from "../ShortBackground/ShortBackground";
 import DashboardTab from "./(Tabs)/DashboardTab/DashboardTab";
 import ProductsTab from "./(Tabs)/ProductsTab/ProductsTab";
-import AddProduct from "./(Tabs)/AddProduct/AddProduct";
+import AddProductTab from "./(Tabs)/AddProductTab/AddProductTab";
+import AddCategoryTab from "./(Tabs)/AddCategoryTab/AddCategoryTab";
 
 function RestaurantDashboard() {
   const [activeTab, setActiveTab] = useState<string>("Dashboard");
@@ -24,7 +25,9 @@ function RestaurantDashboard() {
       case "Products":
         return <ProductsTab />;
       case "AddProduct":
-        return <AddProduct />;
+        return <AddProductTab />;
+      case "AddCategory":
+        return <AddCategoryTab />;
     }
   };
 
@@ -56,6 +59,12 @@ function RestaurantDashboard() {
                   className={activeTab === "AddProduct" ? "active" : ""}
                 >
                   Add Product
+                </li>
+                <li
+                  onClick={() => handleTabChange("AddCategory")}
+                  className={activeTab === "AddCategory" ? "active" : ""}
+                >
+                  Add Category
                 </li>
               </ul>
             </div>

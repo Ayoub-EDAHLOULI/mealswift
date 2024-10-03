@@ -1,7 +1,7 @@
 import React from "react";
-import "./AddProduct.scss";
+import "./AddProductTab.scss";
 
-function AddProduct() {
+function AddProductTab() {
   return (
     <section className="add-product">
       <div className="add-product__container">
@@ -59,4 +59,4 @@ function AddProduct() {
   );
 }
 
-export default AddProduct;
+export default AddProductTab;

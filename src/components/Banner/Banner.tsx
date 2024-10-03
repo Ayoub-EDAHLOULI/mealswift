@@ -1,5 +1,6 @@
 import React from "react";
 import "./Banner.scss";
+import Link from "next/link";
 
 function Banner() {
   return (
@@ -14,7 +15,9 @@ function Banner() {
               Discover the best food & drinks in your city
             </p>
           </div>
-          <button className="banner__button">Order now</button>
+          <Link href="/services">
+            <button className="banner__button">Order now</button>
+          </Link>
         </div>
 
         <div className="banner__container__bottom">
