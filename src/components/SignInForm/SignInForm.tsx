@@ -41,7 +41,7 @@ function SignInForm() {
       }
 
       // Rediriger vers le tableau de bord
-      router.push('/dashboard');
+      router.push('/dashboard/admin');
     } catch (err: any) {
       setError(err.message || "Une erreur s'est produite lors de la connexion");
     } finally {
