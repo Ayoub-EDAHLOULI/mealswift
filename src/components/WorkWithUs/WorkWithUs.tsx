@@ -1,5 +1,6 @@
 import "./WorkWithUs.scss";
 import Image from "next/image";
+import Link from "next/link";
 
 function WorkWithUs() {
   return (
@@ -20,7 +21,9 @@ function WorkWithUs() {
             <p className="work-with-us__card-description">
               Start selling your food to customers online
             </p>
-            <button className="work-with-us__card-button">Submit Now</button>
+            <Link href="/restaurant-form">
+              <button className="work-with-us__card-button">Submit Now</button>
+            </Link>
           </div>
           <div className="work-with-us__card">
             <div className="work-with-us__card-image">
@@ -37,7 +40,9 @@ function WorkWithUs() {
             <p className="work-with-us__card-description">
               Earn money by delivering food to customers
             </p>
-            <button className="work-with-us__card-button">Submit Now</button>
+            <Link href="/driver-form">
+              <button className="work-with-us__card-button">Submit Now</button>
+            </Link>
           </div>
         </div>
       </div>

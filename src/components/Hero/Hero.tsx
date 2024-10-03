@@ -1,4 +1,5 @@
 import "./Hero.scss";
+import Link from "next/link";
 
 function Hero() {
   return (
@@ -10,7 +11,9 @@ function Hero() {
             Choose your favorite meal from our broad selection of available
             meals and enjoy a delicious lunch or dinner at home
           </p>
-          <button className="hero__button">Order Now</button>
+          <Link href="/services">
+            <button className="hero__button">Order Now</button>
+          </Link>
         </div>
         <div className="hero__bottom">
           <div className="hero__bottom__content">
