@@ -1,7 +1,72 @@
+"use client";
+
 import React from "react";
+import { useState } from "react";
+import "./RestaurantDashboard.scss";
+import ShortBackground from "../ShortBackground/ShortBackground";
+import DashboardTab from "./(Tabs)/DashboardTab/DashboardTab";
+import ProductsTab from "./(Tabs)/ProductsTab/ProductsTab";
+import AddProduct from "./(Tabs)/AddProduct/AddProduct";
 
 function RestaurantDashboard() {
-  return <div>RestaurantDashboard</div>;
+  const [activeTab, setActiveTab] = useState<string>("Dashboard");
+
+  // Function to handle tab change
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab);
+  };
+
+  // Function to render the content based on the active tab
+  const renderContent = () => {
+    switch (activeTab) {
+      case "Dashboard":
+        return <DashboardTab />;
+      case "Products":
+        return <ProductsTab />;
+      case "AddProduct":
+        return <AddProduct />;
+    }
+  };
+
+  return (
+    <>
+      <ShortBackground
+        title="Restaurant Dashboard"
+        background="/images/hero_restaurant_dashboard.jpg"
+      />
+      <section className="restaurant-dashboard">
+        <div className="restaurant-dashboard__container">
+          <aside className="restaurant-dashboard__sidebar">
+            <div className="restaurant-dashboard__sidebar__items">
+              <ul>
+                <li
+                  onClick={() => handleTabChange("Dashboard")}
+                  className={activeTab === "Dashboard" ? "active" : ""}
+                >
+                  Dashboard
+                </li>
+                <li
+                  onClick={() => handleTabChange("Products")}
+                  className={activeTab === "Products" ? "active" : ""}
+                >
+                  Products
+                </li>
+                <li
+                  onClick={() => handleTabChange("AddProduct")}
+                  className={activeTab === "AddProduct" ? "active" : ""}
+                >
+                  Add Product
+                </li>
+              </ul>
+            </div>
+          </aside>
+          <main className="restaurant-dashboard__content">
+            {renderContent()}
+          </main>
+        </div>
+      </section>
+    </>
+  );
 }
 
 export default RestaurantDashboard;
