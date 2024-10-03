@@ -23,12 +23,7 @@ const DashboardPage: React.FC = () => {
     }
   };
 
-  return (
-    <div>
-      <h1>{role} Dashboard</h1>
-      {renderDashboard()}
-    </div>
-  );
+  return <div>{renderDashboard()}</div>;
 };
 
 export default DashboardPage;
