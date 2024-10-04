@@ -58,7 +58,7 @@ function SignUpForm() {
       }
 
       // Rediriger vers le tableau de bord
-      router.push("/dashboard");
+      router.push("/");
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.message || "Une erreur s'est produite");
@@ -104,7 +104,7 @@ function SignUpForm() {
             onChange={handleChange}
             required
           />
-          <select
+          {/* <select
             name="role"
             value={credentials.role}
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
@@ -114,7 +114,7 @@ function SignUpForm() {
           >
             <option value="client">Client</option>
             <option value="admin">Administrateur</option>
-          </select>
+          </select> */}
           <button type="submit" disabled={isSubmitting}>
             {isSubmitting ? "Inscription en cours..." : "Créer un compte"}
           </button>

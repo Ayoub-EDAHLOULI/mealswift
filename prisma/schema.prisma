@@ -23,6 +23,7 @@ model Utilisateur {
   statut_disponibilite Boolean?  // Optionnel, uniquement pour les livreurs
   commandes            Commande[]
   livreur              Livreur?
+  restaurant Restaurant?
 
   @@map("utilisateur")
 }
@@ -50,6 +51,8 @@ model Restaurant {
   icon_url       String?   // Ajout du champ pour l'URL de l'icône
   produits       Produit[]
   Commande Commande[]
+  id_utilisateur Int       @unique
+  utilisateur    Utilisateur @relation(fields: [id_utilisateur], references: [id_utilisateur])
 
   @@map("restaurant")
 }
@@ -107,6 +110,7 @@ enum Role {
   client
   livreur
   admin
+  restaurant // Ajoutez ce nouveau rôle
 }
 
 enum Statut {

@@ -4,11 +4,26 @@
 
 import "./Hero.scss";
 import Link from "next/link";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LocationForm from '../LocationForm';
 
 function Hero() {
   const [, setLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [restaurantCount, setRestaurantCount] = useState<number>(0);
+
+  useEffect(() => {
+    async function fetchRestaurantCount() {
+      try {
+        const response = await fetch('/api/restaurants/restaurant-count');
+        const data = await response.json();
+        setRestaurantCount(data.count);
+      } catch (error) {
+        console.error('Erreur lors de la récupération du nombre de restaurants:', error);
+      }
+    }
+
+    fetchRestaurantCount();
+  }, []);
 
   return (
     <section className="hero">
@@ -34,7 +49,7 @@ function Hero() {
         <div className="hero__bottom">
           <div className="hero__bottom__content">
             <div className="hero__bottom__content__box">
-              <span>2650</span>
+              <span>{restaurantCount}</span>
               <p>Restaurant</p>
             </div>
             <div className="hero__bottom__content__box">

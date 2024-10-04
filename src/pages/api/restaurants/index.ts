@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient, Role } from '@prisma/client'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import formidable from 'formidable'
 import fs from 'fs/promises'
@@ -66,6 +66,18 @@ async function addRestaurant(req: NextApiRequest, res: NextApiResponse) {
         iconUrl = `/uploads/${icon.newFilename}`
       }
 
+      // Créer l'utilisateur avec le rôle restaurant
+      const newUser = await prisma.utilisateur.create({
+        data: {
+          nom: Array.isArray(fields.nom) ? fields.nom[0] : fields.nom ?? '',
+          email: Array.isArray(fields.email) ? fields.email[0] : fields.email ?? '',
+          mot_de_passe: 'mot_de_passe_temporaire', // À remplacer par un mot de passe généré ou fourni
+          adresse: Array.isArray(fields.adresse) ? fields.adresse[0] : fields.adresse ?? '',
+          role: 'restaurant' as Role,
+        },
+      })
+
+      // Créer le restaurant
       const newRestaurant = await prisma.restaurant.create({
         data: {
           nom: Array.isArray(fields.nom) ? fields.nom[0] : fields.nom ?? '',
@@ -77,10 +89,11 @@ async function addRestaurant(req: NextApiRequest, res: NextApiResponse) {
           website: Array.isArray(fields.website) ? fields.website[0] : fields.website ?? '',
           image_url: imageUrl ?? '',
           icon_url: iconUrl ?? '',
+          id_utilisateur: newUser.id_utilisateur, // Lier le restaurant à l'utilisateur créé
         },
       })
 
-      res.status(201).json(newRestaurant)
+      res.status(201).json({ user: newUser, restaurant: newRestaurant })
     } catch (error) {
       console.error('Erreur lors de l\'ajout du restaurant:', error)
       res.status(500).json({ message: 'Erreur lors de l\'ajout du restaurant' })
