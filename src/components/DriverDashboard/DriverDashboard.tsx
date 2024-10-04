@@ -6,6 +6,7 @@ import "./DriverDashboard.scss";
 import DashboardTab from "./(Tabs)/DashboardTab/DashboardTab";
 import ShortBackground from "../ShortBackground/ShortBackground";
 import ProtectedRoute from '../common/ProtectedRoute/ProtectedRoute';
+import OrdersDashboard from "./(Tabs)/OrdersDashboard/OrdersDashboard";
 
 function DriverDashboard() {
   const [activeTab, setActiveTab] = useState<string>("Dashboard");
@@ -20,6 +21,8 @@ function DriverDashboard() {
     switch (activeTab) {
       case "Dashboard":
         return <DashboardTab />;
+      case "Orders":
+        return <OrdersDashboard />;
       default:
         return <DashboardTab />;
     }
@@ -41,6 +44,12 @@ function DriverDashboard() {
                   className={activeTab === "Dashboard" ? "active" : ""}
                 >
                   Dashboard
+                </li>
+                <li
+                  onClick={() => handleTabChange("Orders")}
+                  className={activeTab === "Orders" ? "active" : ""}
+                >
+                  Orders
                 </li>
               </ul>
             </div>
