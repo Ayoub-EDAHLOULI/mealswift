@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import ShortBackground from "@/components/ShortBackground/ShortBackground";
 import SignInForm from "@/components/SignInForm/SignInForm";
 

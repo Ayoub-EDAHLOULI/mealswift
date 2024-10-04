@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import Banner from "@/components/Banner/Banner";
 import Hero from "@/components/Hero/Hero";
 import HowWork from "@/components/HowWork/HowWork";

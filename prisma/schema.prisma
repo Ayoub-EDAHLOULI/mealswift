@@ -43,10 +43,15 @@ model Restaurant {
   adresse        String
   type_cuisine   String
   horaires       String
+  email          String?
+  phone          String?
+  website        String?
+  image_url      String?   // Ajout du champ pour l'URL de l'image
+  icon_url       String?   // Ajout du champ pour l'URL de l'icône
   produits       Produit[]
+  Commande Commande[]
 
   @@map("restaurant")
-  Commande Commande[]
 }
 
 model Produit {

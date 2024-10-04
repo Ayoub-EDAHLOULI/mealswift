@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 "use client";
 
 import React from "react";
@@ -30,7 +31,7 @@ function AdminDashboard() {
       case "AddUser":
         return <AddUserTab />;
       case "Restaurants":
-        return <RestaurantsTab />;
+        return <RestaurantsTab onTabChange={handleTabChange} />;
       case "AddRestaurant":
         return <AddRestaurantTab />;
       case "DriversOrders":

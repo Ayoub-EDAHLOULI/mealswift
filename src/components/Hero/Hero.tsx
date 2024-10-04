@@ -1,8 +1,15 @@
-import React from "react";
+/* eslint-disable react/react-in-jsx-scope */
+// /components/Hero.tsx
+"use client";
+
 import "./Hero.scss";
 import Link from "next/link";
+import { useState } from 'react';
+import LocationForm from '../LocationForm';
 
 function Hero() {
+  const [, setLocation] = useState<{ lat: number; lng: number } | null>(null);
+
   return (
     <section className="hero">
       <div className="hero__container">
@@ -12,10 +19,18 @@ function Hero() {
             Choose your favorite meal from our broad selection of available
             meals and enjoy a delicious lunch or dinner at home
           </p>
+
+          {/* Ajouter le formulaire de localisation ici */}
+          <div className="hero__location">
+            <LocationForm onLocationSelect={setLocation} />
+          </div>
+
+          {/* Bouton Order Now */}
           <Link href="/services">
             <button className="hero__button">Order Now</button>
           </Link>
         </div>
+
         <div className="hero__bottom">
           <div className="hero__bottom__content">
             <div className="hero__bottom__content__box">
