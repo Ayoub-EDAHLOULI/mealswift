@@ -66,6 +66,7 @@ model Produit {
   restaurant     Restaurant @relation(fields: [id_restaurant], references: [id_restaurant])
   commandes      Commande_Produit[]
   photo          String?   // Ajout du champ photo
+  category       String    // Nouveau champ pour la catégorie
 
   @@map("produit")
 }

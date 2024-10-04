@@ -1,12 +1,10 @@
-import type { Metadata } from "next";
+/* eslint-disable react/react-in-jsx-scope */
+'use client'
+
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
-
-export const metadata: Metadata = {
-  title: "MealSwift",
-  description: "Delicious meals delivered to your door",
-};
+import { SessionProvider } from "next-auth/react";
 
 export default function RootLayout({
   children,
@@ -15,11 +13,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <Navbar />
-        {children}
-        <Footer />
-      </body>
+      <SessionProvider>
+        <body>
+          <Navbar />
+          {children}
+          <Footer />
+        </body>
+      </SessionProvider>
     </html>
   );
 }

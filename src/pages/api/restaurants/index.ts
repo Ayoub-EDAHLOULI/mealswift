@@ -4,6 +4,13 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import formidable from 'formidable'
 import fs from 'fs/promises'
 import path from 'path'
+import crypto from 'crypto';
+import bcrypt from 'bcryptjs';
+
+// Fonction pour générer un mot de passe aléatoire
+function generatePassword(length = 12) {
+  return crypto.randomBytes(length).toString('hex').slice(0, length);
+}
 
 export const config = {
   api: {
@@ -66,12 +73,21 @@ async function addRestaurant(req: NextApiRequest, res: NextApiResponse) {
         iconUrl = `/uploads/${icon.newFilename}`
       }
 
+      // Générer un mot de passe aléatoire
+      const plainPassword = generatePassword();
+      
+      // Afficher le mot de passe généré dans les logs du serveur
+      console.log('Mot de passe généré pour le restaurant:', plainPassword);
+
+      // Hacher le mot de passe
+      const hashedPassword = await bcrypt.hash(plainPassword, 10);
+
       // Créer l'utilisateur avec le rôle restaurant
       const newUser = await prisma.utilisateur.create({
         data: {
           nom: Array.isArray(fields.nom) ? fields.nom[0] : fields.nom ?? '',
           email: Array.isArray(fields.email) ? fields.email[0] : fields.email ?? '',
-          mot_de_passe: 'mot_de_passe_temporaire', // À remplacer par un mot de passe généré ou fourni
+          mot_de_passe: hashedPassword, // Utiliser le mot de passe haché
           adresse: Array.isArray(fields.adresse) ? fields.adresse[0] : fields.adresse ?? '',
           role: 'restaurant' as Role,
         },
@@ -93,7 +109,11 @@ async function addRestaurant(req: NextApiRequest, res: NextApiResponse) {
         },
       })
 
-      res.status(201).json({ user: newUser, restaurant: newRestaurant })
+      res.status(201).json({ 
+        message: `Restaurant créé avec succès. Mot de passe généré: ${plainPassword}`,
+        user: { ...newUser, mot_de_passe: plainPassword }, // Renvoyer le mot de passe en clair
+        restaurant: newRestaurant 
+      })
     } catch (error) {
       console.error('Erreur lors de l\'ajout du restaurant:', error)
       res.status(500).json({ message: 'Erreur lors de l\'ajout du restaurant' })

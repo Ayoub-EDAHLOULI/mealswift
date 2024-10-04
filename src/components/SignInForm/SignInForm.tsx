@@ -2,10 +2,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import "./SignInForm.scss"; // Assurez-vous de créer ce fichier pour le style
 
@@ -17,6 +16,36 @@ function SignInForm() {
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
+  const { data: session, status } = useSession();
+
+  useEffect(() => {
+    console.log("Status:", status);
+    console.log("Session:", session);
+    if (status === "authenticated" && session?.user?.role) {
+      console.log("Session authentifiée, redirection...");
+      console.log("Rôle de l'utilisateur:", session.user.role);
+      redirectBasedOnRole(session.user.role);
+    }
+  }, [status, session]);
+
+  const redirectBasedOnRole = (role: string) => {
+    console.log("Redirection basée sur le rôle:", role);
+    switch (role) {
+      case 'restaurant':
+        console.log("Tentative de redirection vers /dashboard/restaurant");
+        router.push('/dashboard/restaurant');
+        break;
+      case 'chauffeur':
+        router.push('/dashboard/driver');
+        break;
+      case 'admin':
+        router.push('/dashboard/admin');
+        break;
+      default:
+        console.log("Rôle non reconnu, redirection vers /dashboard");
+        router.push('/');
+    }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCredentials((prev) => ({
@@ -31,19 +60,22 @@ function SignInForm() {
     setIsSubmitting(true);
 
     try {
+      console.log("Tentative de connexion avec:", credentials.email);
       const result = await signIn("credentials", {
         redirect: false,
         email: credentials.email,
         password: credentials.mot_de_passe,
       });
 
+      console.log("Résultat de la connexion:", result);
+
       if (result?.error) {
         throw new Error(result.error);
       }
 
-      // Rediriger vers le tableau de bord
-      router.push('/dashboard/admin');
+      // La redirection sera gérée par l'effet useEffect
     } catch (err: any) {
+      console.error("Erreur de connexion:", err);
       setError(err.message || "Une erreur s'est produite lors de la connexion");
     } finally {
       setIsSubmitting(false);

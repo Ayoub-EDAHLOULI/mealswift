@@ -33,19 +33,24 @@ export default NextAuth({
         }
         const user = await prisma.utilisateur.findUnique({
           where: { email: credentials.email },
-          select: { id_utilisateur: true, email: true, nom: true, mot_de_passe: true, role: true },
         });
 
-        if (user && (await bcrypt.compare(credentials.password, user.mot_de_passe))) {
-          const { mot_de_passe, ...userWithoutPassword } = user;
-          return {
-            id: user.id_utilisateur.toString(),
-            email: user.email,
-            name: user.nom,
-            role: user.role,
-          };
+        if (!user) {
+          throw new Error("Utilisateur non trouvé");
         }
-        return null;
+
+        const isPasswordValid = await bcrypt.compare(credentials.password, user.mot_de_passe);
+
+        if (!isPasswordValid) {
+          throw new Error("Mot de passe incorrect");
+        }
+
+        return {
+          id: user.id_utilisateur.toString(),
+          email: user.email,
+          name: user.nom,
+          role: user.role,
+        };
       },
     }),
   ],
@@ -58,6 +63,7 @@ export default NextAuth({
         token.id = user.id;
         token.role = user.role;
       }
+      console.log("JWT token:", token);
       return token;
     },
     async session({ session, token }) {
@@ -65,6 +71,7 @@ export default NextAuth({
         session.user.id = token.id as string;
         session.user.role = token.role as string;
       }
+      console.log("Session créée:", session);
       return session;
     },
   },

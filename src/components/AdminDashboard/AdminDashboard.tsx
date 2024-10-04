@@ -12,6 +12,7 @@ import RestaurantsOrdersTab from "./(Tabs)/RestaurantsOrdersTab/RestaurantsOrder
 import ShortBackground from "../ShortBackground/ShortBackground";
 import AddUserTab from "./(Tabs)/AddUserTab/AddUserTab";
 import AddRestaurantTab from "./(Tabs)/AddRestaurantTab/AddRestaurantTab";
+import ProtectedRoute from '../common/ProtectedRoute/ProtectedRoute';
 
 function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<string>("Dashboard");
@@ -44,7 +45,7 @@ function AdminDashboard() {
   };
 
   return (
-    <>
+    <ProtectedRoute requiredRole="admin">
       <ShortBackground
         title="Admin Dashboard"
         background="/images/hero_admin.jpg"
@@ -102,7 +103,7 @@ function AdminDashboard() {
           <main className="admin-dashboard__content">{renderContent()}</main>
         </div>
       </section>
-    </>
+    </ProtectedRoute>
   );
 }
 

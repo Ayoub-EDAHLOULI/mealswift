@@ -5,6 +5,7 @@ import { useState } from "react";
 import "./DriverDashboard.scss";
 import DashboardTab from "./(Tabs)/DashboardTab/DashboardTab";
 import ShortBackground from "../ShortBackground/ShortBackground";
+import ProtectedRoute from '../common/ProtectedRoute/ProtectedRoute';
 
 function DriverDashboard() {
   const [activeTab, setActiveTab] = useState<string>("Dashboard");
@@ -25,7 +26,7 @@ function DriverDashboard() {
   };
 
   return (
-    <>
+    <ProtectedRoute requiredRole="driver">
       <ShortBackground
         title="Delivery Driver Dashboard"
         background="/images/hero_delivery.jpg"
@@ -47,7 +48,7 @@ function DriverDashboard() {
           <main className="driver-dashboard__content">{renderContent()}</main>
         </div>
       </section>
-    </>
+    </ProtectedRoute>
   );
 }
 

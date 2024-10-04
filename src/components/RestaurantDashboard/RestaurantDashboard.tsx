@@ -1,13 +1,13 @@
 "use client";
 
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import "./RestaurantDashboard.scss";
 import ShortBackground from "../ShortBackground/ShortBackground";
 import DashboardTab from "./(Tabs)/DashboardTab/DashboardTab";
 import ProductsTab from "./(Tabs)/ProductsTab/ProductsTab";
 import AddProductTab from "./(Tabs)/AddProductTab/AddProductTab";
 import AddCategoryTab from "./(Tabs)/AddCategoryTab/AddCategoryTab";
+import ProtectedRoute from '../common/ProtectedRoute/ProtectedRoute';
 
 function RestaurantDashboard() {
   const [activeTab, setActiveTab] = useState<string>("Dashboard");
@@ -28,11 +28,13 @@ function RestaurantDashboard() {
         return <AddProductTab />;
       case "AddCategory":
         return <AddCategoryTab />;
+      default:
+        return <DashboardTab />;
     }
   };
 
   return (
-    <>
+    <ProtectedRoute requiredRole="restaurant">
       <ShortBackground
         title="Restaurant Dashboard"
         background="/images/hero_restaurant_dashboard.jpg"
@@ -74,7 +76,7 @@ function RestaurantDashboard() {
           </main>
         </div>
       </section>
-    </>
+    </ProtectedRoute>
   );
 }
 

@@ -12,22 +12,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-      const restaurant = await prisma.restaurant.findFirst({ where: { email: email as string } });
-      if (restaurant) {
-        return res.status(200).json({ role: 'restaurant' });
-      }
+      const user = await prisma.utilisateur.findUnique({
+        where: { email: email as string },
+        select: { role: true },
+      });
 
-      const driver = await prisma.driver.findUnique({ where: { email: email as string } });
-      if (driver) {
-        return res.status(200).json({ role: 'driver' });
+      if (user) {
+        return res.status(200).json({ role: user.role });
+      } else {
+        return res.status(404).json({ error: 'User not found' });
       }
-
-      const admin = await prisma.admin.findUnique({ where: { email: email as string } });
-      if (admin) {
-        return res.status(200).json({ role: 'admin' });
-      }
-
-      return res.status(200).json({ role: 'default' });
     } catch (error) {
       console.error('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
